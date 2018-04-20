@@ -5,7 +5,7 @@ Dataprocessing:
        Week 2: JavaScript assignment:
                - Weather.html
                - knmidata.txt from http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi
-               - link to the site:   file:///C:/Users/Ellemijke/programmeren/Github/Dataprocessing/Homework/week%202/Weather.html
+               - link to the site:   http://Elleyey.github.io/index.html
                And:
                - Questions.txt
      Design -
