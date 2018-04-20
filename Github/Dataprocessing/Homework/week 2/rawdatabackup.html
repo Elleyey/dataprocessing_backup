@@ -409,10 +409,10 @@
       // draw the rectangle at position 10,10 width 55, height 50
       ctx.fillRect(0, 0, 1000, 500);
       // set title
-      ctx.font = "21px Comic Sans MS";
-      ctx.fillStyle = "pink";
+      ctx.font = "Bold 21px Calibri";
+      ctx.fillStyle = "rgb(253,245,230)";
       ctx.textAlign = "center";
-      ctx.fillText("~Average temperature in De Bilt, Netherlands, 2017~", 500, 40);
+      ctx.fillText("Average temperature in De Bilt, Netherlands, 2017", 500, 40);
 
       // set x and y axis
       ctx.beginPath();
@@ -422,9 +422,51 @@
       ctx.lineTo(ctxDomain[1], ctxRange[1]);
       ctx.stroke();
 
-      // TO DO set months as texts
+      // set months as texts
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
+      "Sep", "Oct", "Nov", "Dec"]
+      var yMonth = 475;
+      var paddingMonth = ctxLength / months.length;
 
-      // TO DO set temp as text
+      for (var m = 0; m < months.length; m++)
+      {
+        var month = months[m];
+        var xMonth = ctxDomain[0] + 35 + (paddingMonth * m);
+        ctx.fillStyle = "pink";
+        ctx.textAlign = "center";
+        ctx.fillText(month, xMonth, yMonth);
+      }
+
+      // set temperature on y axis
+      var tempMax = Math.round(temperatureMax / 10);
+      var tempa = Math.round(temperatureMin / 10);
+      var tempRange = [];
+      var paddingTemp = 14.2;
+      var xTempera = ctxDomain[0] - 15;
+
+      do
+      {
+        tempa++;
+        tempRange.push(tempa);
+      }
+      while (tempa < tempMax);
+
+      for (var t = 0; t < tempRange.length; t++)
+      {
+        var tempera = tempRange[t];
+        console.log(tempera);
+        var yTempera = ctxRange[1] - (paddingTemp * t);
+        ctx.font = "18px Calibri";
+        ctx.fillStyle = "pink";
+        ctx.textAlign = "center";
+        ctx.fillText(tempera, xTempera, yTempera);
+      }
+
+      ctx.font = "16px Calibri";
+      ctx.fillStyle = "pink";
+      ctx.textAlign = "center";
+      ctx.fillText("celsius degrees", xTempera, 43);
+
 
       // set points on ctx
       var point = createTransform(temperatureDomain, [450, 50]);
@@ -438,7 +480,6 @@
         k += spaceBetweenPoints;
         ctx.lineTo(k, point(temperature[j]));
         ctx.stroke();
-        console.log(temperature[j]);
       }
 
       function createTransform(domain, range)
